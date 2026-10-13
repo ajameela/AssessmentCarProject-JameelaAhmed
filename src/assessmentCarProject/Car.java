@@ -1,4 +1,5 @@
-//this is the start of your Car class 
+//Jameela Ahmed
+//10.13.2026
 
 package assessmentCarProject;
 
@@ -8,12 +9,12 @@ public class Car {
 	private String carID;
 	private String brand;
 	private String model;
-	private String year;
+	private int year;
 	private String fuelType;
 	private String color;
-	private String mileage;
-	
-	public Car(String carID, String brand, String model, String year, String fuelType, String color, String mileage) {
+	private int mileage;
+
+	public Car(String carID, String brand, String model, int year, String fuelType, String color, int mileage) {
 		super();
 		this.carID = carID;
 		this.brand = brand;
@@ -27,56 +28,56 @@ public class Car {
 	public String getCarID() {
 		return carID;
 	}
-	
+
 	public void setCarID(String carID) {
 		this.carID = carID;
 	}
-	
+
 	public String getBrand() {
 		return brand;
 	}
-	
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	
+
 	public String getModel() {
 		return model;
 	}
-	
+
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
-	public String getYear() {
+
+	public int getYear() {
 		return year;
 	}
-	
-	public void setYear(String year) {
+
+	public void setYear(int year) {
 		this.year = year;
 	}
-	
+
 	public String getFuelType() {
 		return fuelType;
 	}
-	
+
 	public void setFuelType(String fuelType) {
 		this.fuelType = fuelType;
 	}
-	
+
 	public String getColor() {
 		return color;
 	}
-	
+
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
-	public String getMileage() {
+
+	public int getMileage() {
 		return mileage;
 	}
-	
-	public void setMileage(String mileage) {
+
+	public void setMileage(int mileage) {
 		this.mileage = mileage;
 	}
 
@@ -97,8 +98,7 @@ public class Car {
 		Car other = (Car) obj;
 		return Objects.equals(brand, other.brand) && Objects.equals(carID, other.carID)
 				&& Objects.equals(color, other.color) && Objects.equals(fuelType, other.fuelType)
-				&& Objects.equals(mileage, other.mileage) && Objects.equals(model, other.model)
-				&& Objects.equals(year, other.year);
+				&& mileage == other.mileage && Objects.equals(model, other.model) && year == other.year;
 	}
-		
+
 }
