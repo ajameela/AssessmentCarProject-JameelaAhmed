@@ -12,9 +12,9 @@ public class Car {
 	private int year;
 	private String fuelType;
 	private String color;
-	private int mileage;
+	private double mileage;
 
-	public Car(String carID, String brand, String model, int year, String fuelType, String color, int mileage) {
+	public Car(String carID, String brand, String model, int year, String fuelType, String color, double mileage) {
 		super();
 		this.carID = carID;
 		this.brand = brand;
@@ -73,11 +73,11 @@ public class Car {
 		this.color = color;
 	}
 
-	public int getMileage() {
+	public double getMileage() {
 		return mileage;
 	}
 
-	public void setMileage(int mileage) {
+	public void setMileage(double mileage) {
 		this.mileage = mileage;
 	}
 
