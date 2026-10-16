@@ -12,50 +12,55 @@ public class CarTester {
 	public static void main(String[] args) {
 
 		loadCars("Car_Data.csv");
-		
+
 		insertionSort(cars);
 
-		for (int i = 0; i < 10 ; i++) {
+		for (int i = 0; i < 10; i++) {
 			System.out.println(cars.get(i));
 		}
-		
-		int index = binarySearch(cars, "Kia");
-		System.out.println(cars.get(index));
-		System.out.println(index);
 
-		for (int i = index; cars.get(i).equals("Kia") && i >= 0; i--) {
-			index--;
+		int index = binarySearch(cars, "Kia");
+
+		if (index == -1) {
+			System.out.println("Kia not found.");
+		} else {
+			System.out.println(cars.get(index));
+			System.out.println(index);
+
+			for (int i = index; i >= 0 && cars.get(i).getBrand().equals("Kia"); i--) {
+				index--;
+			}
+			
+			index++;
+
+			System.out.println(index);
+
+			for (int i = index; i < cars.size() && cars.get(i).getBrand().equals("Kia"); i++) {
+				System.out.println(cars.get(i));
+
+			}
 		}
-		System.out.println(index);
-		for (int i = index; cars.get(i).equals("Kia") && i < cars.size(); i++) {
-			System.out.println(cars.get(i));
-		}
-		
 
 	}
-	
+
 	static int binarySearch(ArrayList<Car> cars, String key) {
-	      int low = 0;
-	      int high = cars.size() - 1;
-	   
-	      while (high >= low) {
-	         int mid = (high + low) / 2;
-	        // if (cars.get(mid).getMileage()< key) {
-	         if (cars.get(mid).getBrand().compareTo(key) < 0) {
-	            low = mid + 1;
-	         }
-	         else if (cars.get(mid).getBrand().compareTo(key) > 0) {
-	            high = mid - 1;
-	         }
-	         else {
-	            return mid;
-	         }
-	      }
-	   
-	      return -1; // not found
-	   }
-	
-	
+		int low = 0;
+		int high = cars.size() - 1;
+
+		while (high >= low) {
+			int mid = (high + low) / 2;
+			// if (cars.get(mid).getMileage()< key) {
+			if (cars.get(mid).getBrand().compareTo(key) < 0) {
+				low = mid + 1;
+			} else if (cars.get(mid).getBrand().compareTo(key) > 0) {
+				high = mid - 1;
+			} else {
+				return mid;
+			}
+		}
+
+		return -1; // not found
+	}
 
 	public static void bubbleSort(ArrayList<Car> cars) {
 		for (int i = 0; i < cars.size() - 1; i++) {
@@ -71,22 +76,22 @@ public class CarTester {
 			}
 		}
 	}
-	
+
 	private static void insertionSort(ArrayList<Car> cars) {
-	      for (int i = 1; i < cars.size(); i++) {
-	         int j = i;
+		for (int i = 1; i < cars.size(); i++) {
+			int j = i;
 //	         while (j > 0 && numbers[j] < numbers[j - 1]) {
-	         while (j > 0 && cars.get(j).getBrand().compareTo(cars.get(j - 1).getBrand()) < 0) {
-	            // Swap numbers[j] and numbers [j - 1]
-        	 	Car temp = cars.get(j);
+			while (j > 0 && cars.get(j).getBrand().compareTo(cars.get(j - 1).getBrand()) < 0) {
+				// Swap numbers[j] and numbers [j - 1]
+				Car temp = cars.get(j);
 				// numbers[j] = numbers[j + 1];
 				cars.set(j, cars.get(j - 1));
 				// numbers[j + 1] = temp;
 				cars.set(j - 1, temp);
-	            j--;
-	         }
-	      }
-	   }
+				j--;
+			}
+		}
+	}
 
 	public static void loadCars(String fileName) {
 
@@ -94,12 +99,12 @@ public class CarTester {
 			Scanner fileScanner = new Scanner(new File(fileName));
 
 			fileScanner.nextLine();
-			
+
 			int counter = 0;
 
 			while (fileScanner.hasNextLine() && counter < 5000) {
 				counter++;
-				
+
 				String line = fileScanner.nextLine();
 				try {
 					String[] fields = line.split(",");
